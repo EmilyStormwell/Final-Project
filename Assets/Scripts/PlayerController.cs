@@ -11,11 +11,14 @@ public class PlayerController : MonoBehaviour
     public float ammoDelay = 1;
     public float ammoInterval = 1;
     public TextMeshProUGUI ammoText;
+    public int score = 0;
+    public TextMeshProUGUI scoreText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InvokeRepeating("IncreaseAmmo", ammoDelay, ammoInterval);
         ammoText.text = "Ammo: " + ammo;
+        scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame

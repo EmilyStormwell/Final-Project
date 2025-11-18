@@ -2558,7 +2558,7 @@ GameObject:
   - component: {fileID: -2232782069833542660}
   m_Layer: 0
   m_Name: Dog_GermanShepherd_01
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2695,6 +2695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa5d7912ce757c40886568d21254792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
+  playerController: {fileID: 0}
+  player: {fileID: 4082664097447161564, guid: 64e4f34853f0c964694083562c24addc, type: 3}
 --- !u!1 &3674533509986067028
 GameObject:
   m_ObjectHideFlags: 0
