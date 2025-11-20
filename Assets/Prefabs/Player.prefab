@@ -527,11 +527,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   horizontalInput: 0
   speed: 10
-  projectilePrefab: {fileID: 928926210854949839, guid: d37cfd04e3bb21f49ba2c54e6c24e300, type: 3}
-  ammo: 0
-  ammoDelay: 1
-  ammoInterval: 1
-  ammoText: {fileID: 0}
+  projectilePrefab:
+  - {fileID: 743877510890321015, guid: cac357f3e4dbba44e9836164b9c7a8b9, type: 3}
+  - {fileID: 5382288687946748210, guid: 7322fc222e2eb6644b2399cd66a2540a, type: 3}
+  - {fileID: 4058909175190228714, guid: cecbe0e58e6bfdf44adc15b6d6d18587, type: 3}
+  - {fileID: 7064041759074115007, guid: 1e0f6d90a65dafe48945ff6d8ff0d7fe, type: 3}
+  - {fileID: 6094086388899371791, guid: 324e43622ae21d0449c1c90e4490ebff, type: 3}
+  feed: 0
+  feedDelay: 1
+  feedInterval: 1
+  feedText: {fileID: 0}
   score: 0
   scoreText: {fileID: 0}
 --- !u!1 &4230822356505814109

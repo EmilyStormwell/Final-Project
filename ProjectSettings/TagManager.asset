@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Dog
   - Farm
+  - Feed
+  - Dog Treat
+  - Energy Drink
   layers:
   - Default
   - TransparentFX

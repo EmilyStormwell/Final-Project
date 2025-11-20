@@ -6,19 +6,29 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float speed = 10.0f;
     private float xRange = 25;
-    public GameObject projectilePrefab;
-    public int ammo = 0;
-    public float ammoDelay = 1;
-    public float ammoInterval = 1;
-    public TextMeshProUGUI ammoText;
+    public GameObject[] projectilePrefab;
+    public int feed = 0;
+    public float feedDelay = 1;
+    public float feedInterval = 1;
+    public TextMeshProUGUI feedText;
     public int score = 0;
     public TextMeshProUGUI scoreText;
+    private int chosenFeed;
+    public GameObject[] dogTreatPrefab;
+    public int dogTreats;
+    public  float dogTreatsDelay = 4;
+    public float dogTreatsInterval = 4;
+    public TextMeshProUGUI dogTreatsText;
+    private int chosenTreat;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("IncreaseAmmo", ammoDelay, ammoInterval);
-        ammoText.text = "Ammo: " + ammo;
+        InvokeRepeating("IncreaseAmmo", feedDelay, feedInterval);
+        InvokeRepeating("IncreaseDogTreats", dogTreatsDelay, dogTreatsInterval);
+        feedText.text = "Feed: " + feed;
         scoreText.text = "Score: " + score;
+        dogTreatsText.text = "Dog Treats: " + dogTreats;
     }
 
     // Update is called once per frame
@@ -35,16 +45,30 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && ammo > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && feed > 0)
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-            ammo--;
-            ammoText.text = "Ammo: " + ammo;
+            chosenFeed = Random.Range(0, projectilePrefab.Length);
+            Instantiate(projectilePrefab[chosenFeed], transform.position, projectilePrefab[chosenFeed].transform.rotation);
+            feed--;
+            feedText.text = "Feed: " + feed;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dogTreats > 0)
+        {
+            chosenTreat = Random.Range(0, dogTreatPrefab.Length);
+            Instantiate(dogTreatPrefab[0], transform.position, dogTreatPrefab[0].transform.rotation);
+            dogTreats--;
+            dogTreatsText.text = "Dog Treats: " + dogTreats;
         }
     }
     void IncreaseAmmo()
     {
-        ammo++;
-        ammoText.text = "Ammo: " + ammo;
+        feed++;
+        feedText.text = "Feed: " + feed;
+    }
+
+    void IncreaseDogTreats()
+    {
+        dogTreats++;
+        dogTreatsText.text = "Dog Treats: " + dogTreats;
     }
 }
