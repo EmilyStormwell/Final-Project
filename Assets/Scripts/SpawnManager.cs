@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
-        InvokeRepeating("UpdateSpawnRate", 0, 5);
+        InvokeRepeating("UpdateSpawnRate", 5, 5);
         InvokeRepeating("SpawnPowerUp", 2, 2);
     }
 

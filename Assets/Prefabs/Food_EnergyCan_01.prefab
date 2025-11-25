@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa5d7912ce757c40886568d21254792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
-  player: {fileID: 0}
+  player: {fileID: 4082664097447161564, guid: 64e4f34853f0c964694083562c24addc, type: 3}
 --- !u!114 &3334375359220520680
 MonoBehaviour:
   m_ObjectHideFlags: 0
