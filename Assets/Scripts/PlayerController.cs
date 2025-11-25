@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float dogTreatsInterval = 4;
     public TextMeshProUGUI dogTreatsText;
     private int chosenTreat;
+    public bool gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +36,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
+        if (!gameOver)
+        {
+            transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
+        }
 
         if (transform.position.x < -xRange)
         {
@@ -45,14 +49,14 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && feed > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && feed > 0 && !gameOver)
         {
             chosenFeed = Random.Range(0, projectilePrefab.Length);
             Instantiate(projectilePrefab[chosenFeed], transform.position, projectilePrefab[chosenFeed].transform.rotation);
             feed--;
             feedText.text = "Feed: " + feed;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dogTreats > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dogTreats > 0 && !gameOver)
         {
             chosenTreat = Random.Range(0, dogTreatPrefab.Length);
             Instantiate(dogTreatPrefab[0], transform.position, dogTreatPrefab[0].transform.rotation);

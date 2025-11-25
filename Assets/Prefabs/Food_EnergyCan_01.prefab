@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4998471229128396087}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 7.95292, y: 0.3, z: 6.25518}
+  m_LocalPosition: {x: -25, y: 0.3, z: 6.25518}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,4 +166,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7168b0762f17ffe448a027ee26154deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveForward
-  speed: 2
+  speed: 5

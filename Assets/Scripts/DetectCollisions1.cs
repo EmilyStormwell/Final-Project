@@ -36,8 +36,8 @@ public class DetectCollisions : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            playerController.feedInterval = playerController.feedInterval / 1.5f;
-            playerController.dogTreatsInterval = playerController.dogTreatsInterval / 1.5f;
+            playerController.feedInterval = playerController.feedInterval / 1.15f;
+            playerController.dogTreatsInterval = playerController.dogTreatsInterval / 1.15f;
             Debug.Log("Feed rate is: " + playerController.feedInterval + " Treats rate is: " + playerController.dogTreatsInterval);
         }
 

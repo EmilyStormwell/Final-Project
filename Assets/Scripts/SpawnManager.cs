@@ -7,15 +7,20 @@ public class SpawnManager : MonoBehaviour
     private float spawnPosZ = 20;
     private float startDelay = 2;
     private float spawnInterval = 2;
-    private float lowerSpawnRangeZ = 50;
-    private float upperSpawnRangeZ = 250;
+    private float lowerSpawnRangeZ = 5;
+    private float upperSpawnRangeZ = 15;
     public GameObject powerUpPrefab;
+    private int powerUpInterval = 10;
+    private PlayerController playerController;
+    public GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
         InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
         InvokeRepeating("UpdateSpawnRate", 5, 5);
-        InvokeRepeating("SpawnPowerUp", 2, 2);
+        InvokeRepeating("SpawnPowerUp", 10, powerUpInterval);
     }
 
     // Update is called once per frame
@@ -26,19 +31,30 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomAnimal()
     {
+        if (!playerController.gameOver)
+        {
             int animalIndex = Random.Range(0, animalPrefabs.Length);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
-        Instantiate(animalPrefabs[animalIndex], spawnPos,
-                animalPrefabs[animalIndex].transform.rotation);
+            Instantiate(animalPrefabs[animalIndex], spawnPos,
+                    animalPrefabs[animalIndex].transform.rotation);
+        }
     }
     void UpdateSpawnRate()
     {
-        spawnInterval = 2 / (1 + (Time.time / 100));
+        if (!playerController.gameOver)
+        {
+            spawnInterval = 2 / (1 + (Time.time / 100));
+            Debug.Log("Spawn Rate is 1 animal per " + spawnInterval + " seconds.");
+        }
     }
 
     void SpawnPowerUp()
     {
-        Vector3 spawnDistance = new Vector3(-550, .3f, Random.Range(lowerSpawnRangeZ, upperSpawnRangeZ));
-        Instantiate(powerUpPrefab, spawnDistance, powerUpPrefab.transform.rotation);
+        if (!playerController.gameOver)
+        {
+            Vector3 spawnDistance = new Vector3(-25, .3f, Random.Range(lowerSpawnRangeZ, upperSpawnRangeZ));
+            Instantiate(powerUpPrefab, spawnDistance, powerUpPrefab.transform.rotation);
+            powerUpInterval = Random.Range(60, 120);
+        }
     }
 }
