@@ -13,14 +13,17 @@ public class SpawnManager : MonoBehaviour
     private int powerUpInterval = 10;
     private PlayerController playerController;
     public GameObject player;
+    private int spawnRateUpdateDelay = 5;
+    private int spawnRateUpdateInterval = 5;
+    private int spawnPowerUpDelay = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
         InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
-        InvokeRepeating("UpdateSpawnRate", 5, 5);
-        InvokeRepeating("SpawnPowerUp", 10, powerUpInterval);
+        InvokeRepeating("UpdateSpawnRate", spawnRateUpdateDelay, spawnRateUpdateInterval);
+        InvokeRepeating("SpawnPowerUp", spawnPowerUpDelay, powerUpInterval);
     }
 
     // Update is called once per frame
